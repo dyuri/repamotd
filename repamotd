@@ -1,6 +1,11 @@
 #!/bin/bash
 
-# TODO
-source repamotd.env
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/repamotd"
+CONFIG_FILE="${CONFIG_DIR}/env"
+PLUGIN_DIR="${CONFIG_DIR}/plugins"
 
-run-parts enabled
+if [ -f $CONFIG_FILE ]; then
+  source $CONFIG_FILE
+fi
+
+run-parts $PLUGIN_DIR
