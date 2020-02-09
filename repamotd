@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# TODO
+source repamotd.env
+
+run-parts enabled
