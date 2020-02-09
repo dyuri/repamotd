@@ -1,0 +1,2 @@
+- proper configuration (.config / $XDG_CONFIG_HOME)
+- more compact display

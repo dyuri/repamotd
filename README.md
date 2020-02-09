@@ -1,0 +1,5 @@
+# repamotd
+
+```
+$ repamotd
+```

@@ -13,17 +13,21 @@ PROCESS_USER=`echo "$PROCESS"| grep -v root | awk {'print $2'} | awk '{ SUM += $
 PROCESSOR_NAME=`grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | awk {'print $0'} | head -1`
 PROCESSOR_COUNT=`grep -ioP 'processor\t:' /proc/cpuinfo | wc -l`
 
-W="\e[0;39m"
-G="\e[1;32m"
+RST="\e[0m"
+W=${COLOR_N:-"\e[0m"}
+N=${COLOR_H1:-"\e[0;38;5;2m"}
+G=${COLOR_H2:-"\e[1;38;5;10m"}
+M=${COLOR_T1:-"\e[1;38;5;15m"}
+T=${COLOR_T2:-"\e[0m"}
 
 echo -e "
-${W}system info:
-$W  Distro......: $W`cat /etc/*release | grep "PRETTY_NAME" | cut -d "=" -f 2- | sed 's/"//g'`
-$W  Kernel......: $W`uname -sr`
+${RST}${M}system info:${W}
+$T  Distro......: $N`cat /etc/*release | grep "PRETTY_NAME" | cut -d "=" -f 2- | sed 's/"//g'`
+$T  Kernel......: $N`uname -sr`
 
-$W  Uptime......: $W`uptime -p`
-$W  Load........: $G$LOAD1$W (1m), $G$LOAD5$W (5m), $G$LOAD15$W (15m)
-$W  Processes...:$W $G$PROCESS_ROOT$W (root), $G$PROCESS_USER$W (user), $G$PROCESS_ALL$W (total)
+$T  Uptime......: $N`uptime -p`
+$T  Load........: $G$LOAD1$W (1m), $G$LOAD5$W (5m), $G$LOAD15$W (15m)
+$T  Processes...:$W $G$PROCESS_ROOT$W (root), $G$PROCESS_USER$W (user), $G$PROCESS_ALL$W (total)
 
-$W  CPU.........: $W$PROCESSOR_NAME ($G$PROCESSOR_COUNT$W vCPU)
-$W  Memory......: $G$USED$W used, $G$FREE$W free, $G$TOTAL$W total$W"
+$T  CPU.........: $W$PROCESSOR_NAME ($G$PROCESSOR_COUNT$W vCPU)
+$T  Memory......: $G$USED$W used, $G$FREE$W free, $G$TOTAL$W total$RST"

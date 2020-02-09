@@ -1,3 +1,16 @@
 #!/bin/bash
 
-systemctl --no-legend --failed
+FAILING=$(systemctl --no-legend --failed | awk '{printf($1 " ")}')
+RST="\033[0m"
+M=${COLOR_T1:-"\033[1;38;5;15m"}
+G=${COLOR_H2:-"\033[1;38;5;10m"}
+R=${COLOR_E2:-"\033[0;38;5;1m"}
+
+if [ -z "$FAILING" ]; then
+  echo -e "\n${M}all services ${G}OK${RST}"
+else
+  echo -e "\n${M}failing services:"
+  for f in $FAILING; do
+    echo -e "  ${R}${f}${RST}"
+  done
+fi
