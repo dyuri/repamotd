@@ -2,6 +2,8 @@
 
 Display *motd-like* system information.
 
+![repamotd in work](https://raw.githubusercontent.com/dyuri/repamotd/master/repamotd.png)
+
 ## Install
 
 Create `$XDG_CONFIG_HOME/repamotd` directory, copy / link the `plugin` directory into it. If `$XDG_CONFIG_HOME` is not set `$HOME/.config` is used.
