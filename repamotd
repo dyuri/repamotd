@@ -3,6 +3,11 @@
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/repamotd"
 CONFIG_FILE="${CONFIG_DIR}/env"
 PLUGIN_DIR="${CONFIG_DIR}/plugins"
+TWIDTH=`tput cols`
+
+if [ $TWIDTH -lt 80 ]; then
+  exit 0
+fi
 
 if [ -f $CONFIG_FILE ]; then
   source $CONFIG_FILE
