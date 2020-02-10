@@ -18,7 +18,7 @@ $ repamotd
 
 If you have a `$XDG_CONFIG_HOME/repamotd/env` file, it will be sourced before executing the plugins.
 
-You can override the dedault colors or the figlet options there.
+You can override the default colors or the figlet options there.
 
 Example:
 
